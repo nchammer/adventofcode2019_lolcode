@@ -73,7 +73,7 @@ HAI 1.3
 		commands'Z SRS outputLocation R output
 		FOUND YR SUM OF currentPosition AN 4
 	IF U SAY SO
-	
+
 	HOW IZ I part1 YR input
 		I HAS A commands ITZ I IZ splitYarn YR input AN YR "," MKAY
 		commands'Z SRS 1 R 12
@@ -89,17 +89,17 @@ HAI 1.3
 				VISIBLE "Part 2: trying " input1  " and " input2
 				I HAS A commands ITZ I IZ splitYarn YR input AN YR "," MKAY	BTW don't have a bukkit copy function yet, just do this every iteration for now
 				commands'Z SRS 1 R input1
-		                commands'Z SRS 2 R input2
-                		I IZ runProgram YR commands MKAY
+				commands'Z SRS 2 R input2
+				I IZ runProgram YR commands MKAY
 				BOTH SAEM commands'Z SRS 0 AN target, O RLY?
 					YA RLY
 						VISIBLE "Part 2 solution: " input1 " and " input2
 						FOUND YR WIN
-                		OIC
+				OIC
 			IM OUTTA YR loop2
 		IM OUTTA YR loop1
 		VISIBLE "Part 2: no solution found!"
-        IF U SAY SO
+	IF U SAY SO
 
 
 	BTW main program start
