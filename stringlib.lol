@@ -42,7 +42,7 @@
  TLDR
  HOW IZ I subYarnin YR yarn AN YR startIndex AN YR endIndex
   I HAS A subYarn ITZ ""
-  IM IN YR loop UPPIN YR count TIL DIFFRINT endIndex AN BIGGR OF endIndex AN SUM OF count AN startIndex
+  IM IN YR loop UPPIN YR count TIL BOTH SAEM endIndex AN SMALLR OF endIndex AN SUM OF count AN startIndex
    subYarn R SMOOSH subYarn AN I IZ STRING'Z AT YR yarn AN YR SUM OF count AN startIndex MKAY MKAY
   IM OUTTA YR loop
   FOUND YR subYarn
