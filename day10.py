@@ -6,7 +6,7 @@ def read_input():
 
 # visible = *, invisible = o, current = @, empty = " ", not checked empty = ., not checked asteroid = #
 
-# builds a grid of visible asteroids, and a list-of-lists representation of all asteroids,
+# builds a grid of visible asteroids, and a list-of-lists ("graph") representation of all asteroids,
 # where the head of each list is visible and rest are "behind" visible one in order
 def build_visible_asteroids_grid_and_graph(x, y):
  asteroids = read_input()
@@ -37,22 +37,27 @@ def build_visible_asteroids_grid_and_graph(x, y):
    check_location(asteroids, graph, x, y, i, j)
 
  # sort graph according to laser rotation order
- graph.sort(key=lambda list: get_sort_slope((list[0][0] - x, list[0][1] - y)))
+ # use slopes, plus arbitrarily large numbers to separate "rightward" from "leftward" laser directions
+ def get_sort_slope(location_list):
+  location_x, location_y = location_list[0]
+  delta_x = location_x - x
+  delta_y = location_y - y
 
+  if delta_x == 0:
+   if delta_y < 0:
+    return -5000.0  # up is first
+   else:
+    return 5000.0   # down is after quadrants 1,2 but before quadrants 3,4
+  slope = (delta_y * 1.0) / delta_x
+  if delta_x < 0:   # put quadrants 3,4 after quadrants 1,2 with same slope
+   slope += 10000.0
+  return slope
+
+ graph.sort(key=get_sort_slope)
  return (asteroids, graph)
 
-def get_sort_slope(location_delta):
- x,y = location_delta
- if x == 0:
-  if y > 0:
-   return 5000.0
-  else:
-   return -5000.0
- slope = (y * 1.0) / x
- if x < 0:
-  slope += 10000
- return slope
-
+# check a location, and if asteroid found, mark all concealed asteroids as found and invisible also
+# intended to be called first from points "closer" to the candidate station
 def check_location(grid, graph, candidate_x, candidate_y, location_x, location_y):
  x_range = len(grid[0])
  y_range = len(grid)
@@ -84,6 +89,7 @@ def check_location(grid, graph, candidate_x, candidate_y, location_x, location_y
  if len(asteroids_list) > 0:
   graph.append(asteroids_list)
 
+# create sequence that asteroids will be exploded by laser
 def sequence_asteroid_explosions(graph):
  output = []
  found_more = True
