@@ -387,8 +387,7 @@ HAI 1.4
  HOW IZ I expandinGrid YR grid AN YR axis AN YR location
   BOTH SAEM axis AN "x", O RLY?
    YA RLY
-    BTW add new column
-    VISIBLE "addin new column at " x
+    BTW VISIBLE "addin new column at " x
     I HAS A minY ITZ grid'Z SRS gridYMinKey
     I HAS A maxY ITZ grid'Z SRS gridYMaxKey
     I HAS A spacesToPaint ITZ SUM OF 1 AN DIFF OF maxY AN minY
@@ -406,8 +405,7 @@ HAI 1.4
      NO WAI, grid'Z SRS gridXMaxKey R location
     OIC
    NO WAI
-    BTW add new row
-    VISIBLE "addin new row at " y
+    BTW VISIBLE "addin new row at " y
     I HAS A minX ITZ grid'Z SRS gridXMinKey
     I HAS A maxX ITZ grid'Z SRS gridXMaxKey
     I HAS A spacesToPaint ITZ SUM OF 1 AN DIFF OF maxX AN minX
